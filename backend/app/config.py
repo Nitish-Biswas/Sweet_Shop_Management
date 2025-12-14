@@ -4,6 +4,7 @@ Configuration module for Sweet Shop Management System.
 import os
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from functools import lru_cache
+from typing import List
 
 class Settings(BaseSettings):
     """
@@ -24,8 +25,8 @@ class Settings(BaseSettings):
     # It is safe to keep defaults for these, or add them to .env if you prefer
     app_name: str = "Sweet Shop Management System"
     app_version: str = "1.0.0"
-    allowed_origins: list = ["http://localhost:3000", "http://localhost:5173"]
-
+    allowed_origins: List[str]
+    
     # Configure path to find .env in 'backend/' folder
     model_config = SettingsConfigDict(
         env_file=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env"),
