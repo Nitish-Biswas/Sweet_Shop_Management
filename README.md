@@ -3,7 +3,7 @@
 A professional Sweet Shop Management System built with a FastAPI backend and a React (Vite) frontend.
 
 ## 🔗 Live Application
-**[View Live Application on Vercel](https://sweet-shop-management-vert.vercel.app/)**
+**[View Live Application on Vercel (https://sweet-shop-management-vert.vercel.app/)](https://sweet-shop-management-vert.vercel.app/)**
 
 ## 🚀 Features
 
@@ -17,7 +17,7 @@ A professional Sweet Shop Management System built with a FastAPI backend and a R
 
 ### Backend
 - **Framework**: FastAPI
-- **Database**: SQLite (via SQLAlchemy)
+- **Database**: SQLite (via SQLAlchemy) (Local) / Supabase (PostgreSQL) (via SQLAlchemy) (Deploy)
 - **Testing**: Pytest
 - **Python Version**: 3.11+
 
