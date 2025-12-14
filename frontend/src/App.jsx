@@ -10,6 +10,10 @@ function App() {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [loading, setLoading] = useState(true);
+  const [currentTheme, setCurrentTheme] = useState('default');
+  const [cart, setCart] = useState({});
+
+  const cartItemCount = Object.values(cart).reduce((a, b) => a + b, 0);
 
   useEffect(() => {
     const savedToken = localStorage.getItem('token');
@@ -31,6 +35,7 @@ function App() {
   const handleLogout = () => {
     setUser(null);
     setToken(null);
+    setCart({});
     localStorage.removeItem('token');
     localStorage.removeItem('user');
   };
@@ -41,12 +46,34 @@ function App() {
 
   return (
     <Router>
-      {token && <Navbar user={user} onLogout={handleLogout} />}
+      {token && (
+        <Navbar 
+          user={user} 
+          onLogout={handleLogout} 
+          currentTheme={currentTheme}
+          setCurrentTheme={setCurrentTheme}
+          cartItemCount={cartItemCount}
+        />
+      )}
       <Routes>
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/register" element={<Register onLogin={handleLogin} />} />
-        <Route path="/" element={token ? <Dashboard user={user} /> : <Navigate to="/login" />} />
-        <Route path="/admin" element={token && user?.is_admin ? <AdminPanel user={user} /> : <Navigate to="/" />} />
+        <Route 
+          path="/" 
+          element={
+            token ? (
+              <Dashboard 
+                user={user} 
+                currentTheme={currentTheme}
+                cart={cart}
+                setCart={setCart}
+              />
+            ) : (
+              <Navigate to="/login" />
+            )
+          } 
+        />
+        <Route path="/admin" element={token && user?.is_admin ? <AdminPanel user={user} currentTheme={currentTheme} /> : <Navigate to="/" />} />
       </Routes>
     </Router>
   );

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Search, X } from 'lucide-react';
 
 function SearchBar({ onSearch }) {
   const [name, setName] = useState('');
@@ -23,54 +25,90 @@ function SearchBar({ onSearch }) {
     onSearch({});
   };
 
+  const hasFilters = name || category || minPrice || maxPrice;
+
   return (
-    <div className="bg-white p-6 rounded-xl shadow-md mb-6">
-      <h3 className="font-bold text-lg mb-4 text-gray-800">Search & Filter</h3>
+    <motion.div 
+      className="card bg-base-100 shadow-lg p-6 mb-8 border border-gray-100"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+    >
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-2">
+          <Search className="text-purple-600" size={24} />
+          <h3 className="font-bold text-lg text-gray-800">Search & Filter</h3>
+        </div>
+        {hasFilters && (
+          <motion.button
+            onClick={handleClear}
+            className="text-sm px-3 py-1 bg-red-100 text-red-600 rounded-full hover:bg-red-200 transition"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Clear All
+          </motion.button>
+        )}
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-        <input
+        <motion.input
           type="text"
           placeholder="Search by name..."
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="input input-bordered w-full"
+          whileFocus={{ scale: 1.02 }}
         />
-        <input
+        <motion.input
           type="text"
           placeholder="Category"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="input input-bordered w-full"
+          whileFocus={{ scale: 1.02 }}
         />
-        <input
+        <motion.input
           type="number"
-          placeholder="Min Price"
+          placeholder="Min Price (₹)"
           value={minPrice}
           onChange={(e) => setMinPrice(e.target.value)}
-          className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="input input-bordered w-full"
+          whileFocus={{ scale: 1.02 }}
         />
-        <input
+        <motion.input
           type="number"
-          placeholder="Max Price"
+          placeholder="Max Price (₹)"
           value={maxPrice}
           onChange={(e) => setMaxPrice(e.target.value)}
-          className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="input input-bordered w-full"
+          whileFocus={{ scale: 1.02 }}
         />
       </div>
-      <div className="flex gap-2">
-        <button
+
+      <div className="flex gap-3">
+        <motion.button
           onClick={handleSearch}
-          className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold"
+          className="btn btn-primary flex-1"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
         >
+          <Search size={20} />
           Search
-        </button>
-        <button
-          onClick={handleClear}
-          className="px-6 py-2 bg-gray-400 text-white rounded-lg hover:bg-gray-500 transition font-semibold"
-        >
-          Clear
-        </button>
+        </motion.button>
+        {hasFilters && (
+          <motion.button
+            onClick={handleClear}
+            className="btn btn-ghost"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <X size={20} />
+            Clear
+          </motion.button>
+        )}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
