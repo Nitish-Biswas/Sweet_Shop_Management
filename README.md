@@ -84,19 +84,30 @@ A professional Sweet Shop Management System built with a FastAPI backend and a R
 ## 📸 Screenshots
 
 ### User Interface
-| Login | Signup |
+| Login | Signin |
 |:---:|:---:|
-| ![Login](screenshots/login.png) | ![Signup](screenshots/signup.png) |
+| ![Login](screenshots/login.png) | ![Signin](screenshots/signin.png) |
 
 ### Dashboard
-![Dashboard](screenshots/dashboard.png)
+| Dashboard View 1 | Dashboard View 2 |
+|:---:|:---:|
+| ![Dashboard 1](screenshots/dashboard1.png) | ![Dashboard 2](screenshots/dashboard2.png) |
+
+| Dashboard View 3 |
+|:---:|
+| ![Dashboard 3](screenshots/dashboard3.png) | ![Dashboard 4](screenshots/dashboard4.png) |
 
 ### Admin Panel
-| Overview | Management |
+| Admin Panel 1 | Admin Panel 2 |
 |:---:|:---:|
-| ![Admin Panel](screenshots/adminpanel.png) | ![Admin Actions](screenshots/adminpanel2.png) |
+| ![Admin Panel 1](screenshots/admin_panel1.png) | ![Admin Panel 2](screenshots/admin_panel2.png) |
 
-### Verification
+| Admin Panel 3 | Admin Panel 4 |
+|:---:|:---:|
+| ![Admin Panel 3](screenshots/admin_panel3.png) | ![Admin Panel 4](screenshots/admin_panel4.png) |
+
+
+## Verification
 ![Test Execution](screenshots/pytest.png)
 
 ## 🤖 My AI Usage
